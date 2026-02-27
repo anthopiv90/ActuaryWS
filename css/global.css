@@ -208,30 +208,17 @@ ul {
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
 }
 
-.logo-mark {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    color: white;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    letter-spacing: 1px;
+.logo-img {
+    height: 200px;
+    width: auto;
+    object-fit: contain;
+    transition: transform var(--transition-fast);
 }
 
-.logo-text {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
+.brand-logo:hover .logo-img {
+    transform: scale(1.02);
 }
 
 .nav-links {
