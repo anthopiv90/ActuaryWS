@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Checkout Simulation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f7fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .stripe-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .top-bar {
+            background-color: #635bff;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .top-bar .title {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .top-bar .amount {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .payment-form {
+            padding: 32px 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #30313d;
+            margin-bottom: 8px;
+        }
+
+        .stripe-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6ebf1;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: white;
+            transition: box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .stripe-input:focus {
+            outline: none;
+            border-color: #635bff;
+            box-shadow: 0 0 0 2px rgba(99, 91, 255, 0.2);
+        }
+
+        .card-element {
+            display: flex;
+            gap: 10px;
+        }
+
+        .card-element input {
+            flex: 1;
+        }
+
+        .card-element input.small {
+            flex: 0 0 80px;
+        }
+
+        .btn-pay {
+            background-color: #635bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            margin-top: 10px;
+        }
+
+        .btn-pay:hover {
+            background-color: #4b45cf;
+        }
+
+        .btn-pay:disabled {
+            background-color: #a09df0;
+            cursor: not-allowed;
+        }
+
+        .test-badge {
+            background: #fff8e6;
+            color: #d46b08;
+            padding: 8px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-top: 1px solid #faad14;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stripe-container">
+        <div class="top-bar">
+            <div class="title">Hellenic Actuarial Society</div>
+            <div class="amount">€150.00</div>
+            <div style="font-size: 14px; opacity: 0.8; margin-top: 5px;">Annual Subscription Dues</div>
+        </div>
+
+        <div class="payment-form">
+            <div class="input-group">
+                <label class="input-label">Email</label>
+                <input type="email" class="stripe-input" value="member@actuaries.org.gr" readonly
+                    style="background: #f7fafc; color: #8898aa;">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Card Information</label>
+                <div
+                    style="border: 1px solid #e6ebf1; border-radius: 6px; overflow: hidden; display: flex; align-items: center; padding: 0 10px; background: white;">
+                    <i class="fa-regular fa-credit-card" style="color: #635bff; margin-right: 10px;"></i>
+                    <input type="text" class="stripe-input" value="4242 4242 4242 4242"
+                        style="border: none; border-radius: 0; padding: 12px 0;" placeholder="Card number">
+                </div>
+            </div>
+
+            <div class="card-element">
+                <input type="text" class="stripe-input" placeholder="MM / YY" value="12 / 28">
+                <input type="text" class="stripe-input small" placeholder="CVC" value="123">
+            </div>
+
+            <button class="btn-pay" id="btn-submit">
+                <i class="fa-solid fa-lock"></i> Pay €150.00
+            </button>
+        </div>
+
+        <div class="test-badge">
+            <i class="fa-solid fa-triangle-exclamation"></i> TEST MODE - No real money is charged.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn-submit').addEventListener('click', (e) => {
+            const btn = e.target;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            // Simulate processing artificial delay
+            setTimeout(() => {
+                // Return explicitly to dashboard with success query param
+                window.location.href = 'dashboard.html?payment=success';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Η Ένωση Αναλογιστών Ελλάδος - Education and Certification">
+    <title>Education & Certification | Hellenic Actuarial Society</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Load Schedule Data script synchronously before main JS for easy local file access -->
+    <script src="./data/scheduleData.js"></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container utility-content">
+                <div class="utility-left">
+                    <button class="language-switch">GR | <strong>EN</strong></button>
+                </div>
+                <div class="utility-right">
+                    <a href="#" class="utility-link"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                    <a href="#" class="utility-link btn-login"><i class="fa-solid fa-lock"></i> Member Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav shadow-sm bg-white">
+            <div class="container nav-content">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-mark">HAS</div>
+                    <div class="logo-text">Hellenic Actuarial<br>Society</div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="about.html">About the Society</a></li>
+                    <li><a href="#" class="highlight-link">Future Actuaries <i class="fa-solid fa-star"></i></a></li>
+                    <li class="has-dropdown">
+                        <a href="education.html" class="active"
+                            style="color: var(--color-primary); font-weight: 600;">Education & Certification <i
+                                class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                        <!-- MEGA MENU -->
+                        <div class="mega-menu shadow-md">
+                            <div class="mega-menu-content">
+                                <div class="mega-section">
+                                    <h4><i class="fa-solid fa-book-open"></i> Education</h4>
+                                    <ul>
+                                        <li><a href="#seminars">Current Seminar Program</a></li>
+                                        <li><a href="#teachers">Teachers Profile</a></li>
+                                        <li><a href="#curriculum">Curriculum</a></li>
+                                        <li><a href="#bibliography">Proposed Bibliography</a></li>
+                                        <li><a href="#past-papers">Past Papers</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-section">
+                                    <h4><i class="fa-solid fa-certificate"></i> Certifications</h4>
+                                    <ul>
+                                        <li><a href="#thas">THAS (Trainee Member)</a></li>
+                                        <li><a href="#ahas">AHAS (Associate Member)</a></li>
+                                        <li><a href="#fhas">FHAS (Full Member)</a></li>
+                                        <li><a href="#cera">CERA</a></li>
+                                        <li><a href="#schedule">Current Schedule</a></li>
+                                        <li><a href="#apply">How to Apply</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">Profession & Members</a></li>
+                    <li><a href="#">News & Events</a></li>
+                </ul>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Education & Certification</h1>
+                <p>Comprehensive training programs, rigorous examinations, and global certifications equipping actuaries
+                    to lead resilient organizations.</p>
+            </div>
+        </div>
+
+        <!-- Education Sections -->
+        <div style="background-color: var(--color-bg-light); padding-top: 2rem;">
+            <!-- SEMINARS -->
+            <section class="content-section bg-white outline-container" id="seminars"
+                style="margin-bottom: 2rem; border-radius: 8px;">
+                <div class="container">
+                    <h2>Current Seminar Program</h2>
+                    <p class="text-muted">Explore our continuing education seminars designed for both candidate
+                        actuaries and active professionals aiming to fulfill their CPD requirements.</p>
+                    <div class="table-responsive">
+                        <table class="data-table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Seminar Topic</th>
+                                    <th>Dates</th>
+                                    <th>Location/Format</th>
+                                    <th>CPE Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Advanced Risk Modeling with R</td>
+                                    <td>April 10-12, 2026</td>
+                                    <td>Online</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>IFRS 17 Implementations</td>
+                                    <td>June 5-6, 2026</td>
+                                    <td>Athens</td>
+                                    <td>12</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TEACHERS, CURRICULUM, BIBLIO, PAST PAPERS -->
+            <section class="content-section outline-container"
+                style="background-color: var(--color-bg-light); padding: 3rem 0; margin-bottom: 2rem;"
+                id="education-resources">
+                <div class="container">
+                    <div class="content-grid" style="gap: 2rem;">
+
+                        <!-- Teachers -->
+                        <div class="card-resource shadow-sm" id="teachers">
+                            <h3><i class="fa-solid fa-chalkboard-user text-primary" style="margin-right: 10px;"></i>
+                                Teachers Profile</h3>
+                            <p>Our educators are Full Members (FHAS) and experienced practitioners bringing real-world
+                                insights into the classroom.</p>
+                            <a href="#" class="btn-text">View Full Faculty List &rarr;</a>
+                        </div>
+
+                        <!-- Curriculum -->
+                        <div class="card-resource shadow-sm" id="curriculum">
+                            <h3><i class="fa-solid fa-list-check text-primary" style="margin-right: 10px;"></i>
+                                Curriculum</h3>
+                            <p>Syllabus covering 10 distinct subjects in alignment with the International Actuarial
+                                Association standard framework.</p>
+                            <a href="#" class="btn-text">Download Curriculum PDF &rarr;</a>
+                        </div>
+
+                        <!-- Bibliography -->
+                        <div class="card-resource shadow-sm" id="bibliography">
+                            <h3><i class="fa-solid fa-book text-primary" style="margin-right: 10px;"></i> Proposed
+                                Bibliography</h3>
+                            <p>Essential reading lists designed for candidate actuaries to master theoretical concepts
+                                and pass the examinations.</p>
+                            <a href="#" class="btn-text">View Reading Lists &rarr;</a>
+                        </div>
+
+                        <!-- Past Papers -->
+                        <div class="card-resource shadow-sm" id="past-papers">
+                            <h3><i class="fa-solid fa-file-signature text-primary" style="margin-right: 10px;"></i> Past
+                                Papers</h3>
+                            <p>Archive of previous examination papers and examiner reports to aid students in
+                                structuring their preparation journey.</p>
+                            <a href="#" class="btn-text">Access Exam Archives &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CERTIFICATIONS (THAS, AHAS, FHAS, CERA) -->
+            <section class="content-section bg-white outline-container" id="certifications"
+                style="margin-bottom: 2rem; border-radius: 8px;">
+                <div class="container">
+                    <h2 class="text-center" style="display: block; margin-bottom: 3rem;">Levels of Certification</h2>
+                    <div class="cert-grid">
+                        <div class="cert-card" id="thas">
+                            <div class="cert-badge">THAS</div>
+                            <h3>Trainee Member</h3>
+                            <p>Entry-level pathway for university graduates beginning exams.</p>
+                        </div>
+                        <div class="cert-card" id="ahas">
+                            <div class="cert-badge">AHAS</div>
+                            <h3>Associate Member</h3>
+                            <p>Completion of core principles and multi-year professional experience.</p>
+                        </div>
+                        <div class="cert-card" id="fhas">
+                            <div class="cert-badge">FHAS</div>
+                            <h3>Full Member</h3>
+                            <p>Complete examination path, voting rights, and full signing authority.</p>
+                        </div>
+                        <div class="cert-card" id="cera">
+                            <div class="cert-badge" style="background: var(--color-secondary);">CERA</div>
+                            <h3>Enterprise Risk</h3>
+                            <p>The global credential for specialized Enterprise Risk Management.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXAM SCHEDULE (DYNAMIC) & HOW TO APPLY -->
+            <section class="content-section outline-container" id="schedule-apply" style="padding: 4rem 0 6rem;">
+                <div class="container">
+                    <div class="schedule-apply-grid">
+                        <!-- Dynamic Schedule Injected Here via JS -->
+                        <div id="schedule">
+                            <h2>Current Examination Schedule</h2>
+                            <div id="dynamic-schedule-container">
+                                <p>Loading current examination schedule...</p>
+                            </div>
+                        </div>
+
+                        <!-- Apply Instructions -->
+                        <div id="apply" class="apply-box bg-white shadow-sm"
+                            style="padding: 2.5rem; border-radius: 8px; border-top: 4px solid var(--color-primary);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1.5rem;"><i
+                                    class="fa-solid fa-file-pen" style="margin-right: 8px;"></i> How To Apply</h3>
+                            <ol class="styled-list">
+                                <li>Ensure your Trainee Member dues are paid.</li>
+                                <li>Review the examination syllabus and register before deadlines.</li>
+                                <li>Submit the examination fee receipt to the society email.</li>
+                            </ol>
+                            <a href="#" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Online
+                                Application</a>
+                            <p
+                                style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem; text-align: center;">
+                                Need accommodations? <a href="#" style="text-decoration: underline;">Contact us</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Generic footer -->
+    <footer style="background: var(--color-primary-dark); color: white; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p style="opacity: 0.8; font-size: 0.9rem;">&copy; 2026 Hellenic Actuarial Society. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // Inline script strictly for rendering the local JS Data Object
+        // This is safe from CORS and ideal for the ease-of-update requirement.
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dynamic-schedule-container');
+            if (container && typeof HAS_SCHEDULE_DATA !== 'undefined') {
+                let html = `<p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--color-text-muted);">
+                                <em>Last Updated: ${HAS_SCHEDULE_DATA.lastUpdated}</em>
+                            </p>`;
+
+                html += `<div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Course Subject</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Format/Location</th>
+                                        <th>Deadline</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+
+                HAS_SCHEDULE_DATA.exams.forEach(exam => {
+                    html += `<tr>
+                                <td style="font-weight: 500; color: var(--color-primary);">${exam.course}</td>
+                                <td>${exam.date}</td>
+                                <td>${exam.time}</td>
+                                <td>${exam.location}</td>
+                                <td><span style="color: #d9534f; font-weight: 600;">${exam.deadline}</span></td>
+                            </tr>`;
+                });
+
+                html += `</tbody></table></div>`;
+                container.innerHTML = html;
+            } else {
+                container.innerHTML = '<p style="color: red;">Unable to load schedule data. Please check scheduleData.js.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>

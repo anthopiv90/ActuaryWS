@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Η Ένωση Αναλογιστών Ελλάδος - Member Login">
+    <title>Member Login | Hellenic Actuarial Society</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Supabase JS Library (Loaded from CDN for vanilla integration) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        .auth-container {
+            min-height: calc(100vh - 80px);
+            /* Minus header height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1rem;
+            background-color: var(--color-bg-light);
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(8, 33, 58, 0.95), rgba(15, 59, 102, 0.85));
+            z-index: 1;
+        }
+
+        .auth-box {
+            position: relative;
+            z-index: 2;
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 136, 204, 0.3);
+        }
+
+        .auth-header h1 {
+            color: var(--color-primary-dark);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background-color: #FAFCFE;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.15);
+            background-color: var(--color-white);
+        }
+
+        .auth-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .auth-link {
+            color: var(--color-secondary);
+            font-weight: 500;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-message {
+            display: none;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .alert-error {
+            background-color: #FEF2F2;
+            color: #991B1B;
+            border: 1px solid #F87171;
+        }
+
+        .auth-footer {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            border-top: 1px solid var(--color-border);
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+
+<body style="padding-top: var(--header-height);">
+
+    <!-- Main Navigation (Minimalist for Auth Page) -->
+    <header class="site-header" style="background: white;">
+        <nav class="main-nav shadow-sm">
+            <div class="container nav-content">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-mark">HAS</div>
+                    <div class="logo-text">Hellenic Actuarial<br>Society</div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">&larr; Back to Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="auth-logo">HAS</div>
+                <h1>Member Portal</h1>
+                <p>Sign in to manage your CPDs, subscriptions, and exam registrations.</p>
+            </div>
+
+            <!-- Error Notification Area -->
+            <div id="auth-alert" class="alert-message alert-error">
+                Invalid email or password. Please try again.
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="member@actuaries.org.gr" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <div class="auth-actions">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="remember"> Remember me
+                    </label>
+                    <a href="#" class="auth-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-submit" id="btn-login" style="border: none;">
+                    Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Not a member yet? <br><a href="education.html#apply" class="auth-link">Apply to become an Actuary</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Authentication Logic injected via JS -->
+    <script src="./js/auth.js"></script>
+</body>
+
+</html>
