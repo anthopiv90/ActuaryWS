@@ -211,7 +211,7 @@ ul {
 }
 
 .logo-img {
-    height: 200px;
+    height: 60px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
@@ -372,6 +372,11 @@ ul {
     height: 2px;
     background-color: var(--color-primary);
     transition: all 0.3s;
+}
+
+/* Mobile-only nav items: hidden on desktop, shown inside mobile dropdown */
+.mobile-only-nav {
+    display: none;
 }
 
 /* ------------- HERO SECTION ------------- */
@@ -834,8 +839,20 @@ ul {
 
 @media (max-width: 768px) {
     .utility-bar {
+        height: auto;
+        padding: 0.4rem 0;
+        /* Compact utility bar on mobile */
+    }
+
+    .utility-content {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: space-between;
+    }
+
+    .utility-link:not(.btn-login) {
         display: none;
-        /* Hide top bar on very small devices for cleaner look */
+        /* Hide Contact Us on mobile, keep login */
     }
 
     .site-header {
@@ -843,8 +860,13 @@ ul {
     }
 
     .hero-section {
-        margin-top: var(--header-height);
+        margin-top: calc(var(--header-height) + var(--utility-height));
         min-height: 500px;
+    }
+
+    .hero-bg {
+        background-attachment: scroll;
+        /* Fix parallax performance on mobile */
     }
 
     .mobile-menu-toggle {
@@ -875,6 +897,11 @@ ul {
         font-size: 1.1rem;
         width: 100%;
         display: block;
+    }
+
+    /* Show mobile-only nav items (login + lang switch) in mobile menu */
+    .mobile-only-nav {
+        display: list-item;
     }
 
     .cert-grid,
